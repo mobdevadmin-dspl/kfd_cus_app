@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_bg"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <com.datamation.kfdsfa.utils.CustomBtn
+        android:id="@+id/t_download"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/ic_download"
+        android:layout_marginTop="14dp"
+        android:padding="5dp"
+        android:textSize="25sp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Download Data" />
+
+    <com.datamation.kfdsfa.utils.CustomBtn
+        android:id="@+id/t_upload"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/t_download"
+        android:layout_below="@+id/t_download"
+        android:drawableLeft="@drawable/ic_upload_24"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        android:padding="5dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="17dp"
+        android:text="Upload Data" />
+
+</RelativeLayout>
