@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -110,14 +111,16 @@ public class UploadPreSales extends AsyncTask<ArrayList<OrderNew>, Integer, Arra
                                     @Override
                                     public void run() {
                                         c.setIsSync("1");
+                                        c.setIsActive("2");
                                        // new OrderController(context).updateIsSynced(c.getRefNo(), "1");
-                                        new OrderController(context).updateIsSynced(c.getRefNo(), "1", "SYNCED","0");
+                                        new OrderController(context).updateIsSynced(c.getRefNo(), "1", "SYNCED","2");
 
                                         addRefNoResults(c.getRefNo() +" --> Success\n",RCSList.size());
                                     }
                                 });
                             }else{
                                 c.setIsSync("0");
+                                c.setIsActive("0");
                                 //new OrderController(context).updateIsSynced(c.getRefNo(), "0");
                                 new OrderController(context).updateIsSynced(c.getRefNo(), "0", "NOT SYNCED","0");
 
@@ -159,7 +162,9 @@ public class UploadPreSales extends AsyncTask<ArrayList<OrderNew>, Integer, Arra
                     @Override
                     public void onFailure(Call<Result> call, Throwable t) {
                         Toast.makeText(context, "Error response " + t.toString(), Toast.LENGTH_LONG).show();
-
+//                        Intent intnt = new Intent(getActivity(), ActivityHome.class);
+//                        startActivity(intnt);
+//                        getActivity().finish();
                     }
 
                 });
