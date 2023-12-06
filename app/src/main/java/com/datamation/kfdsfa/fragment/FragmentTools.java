@@ -303,7 +303,7 @@ public class FragmentTools extends Fragment implements View.OnClickListener, Upl
                                 Toast.makeText(getActivity(), "No Records to upload !", Toast.LENGTH_LONG).show();
                             }else {
                                 try {
-                                    //new UploadPreSales(getActivity(), FragmentTools.this, TaskTypeUpload.UPLOAD_ORDER).execute(orderList);
+                                  //  new UploadPreSales(getActivity(), FragmentTools.this, TaskTypeUpload.UPLOAD_ORDER).execute(orderList);
                                     Log.v(">>8>>", "UploadPreSales execute finish");
                                 } catch (Exception e) {
                                     Log.e("***", "onPositive: ", e);
