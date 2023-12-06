@@ -203,8 +203,12 @@ public class FragmentHome extends Fragment {
                     if(paymentDetailsFragment == null) paymentDetailsFragment = new PaymentDetailsFragment();
                     return  paymentDetailsFragment;
                 case 4:
-                    if(deliveryDetailsFragment == null) deliveryDetailsFragment = new DeliveryDetailsFragment();
-                    return  deliveryDetailsFragment;
+                    if(deliveryDetailsFragment == null){
+                        deliveryDetailsFragment = new DeliveryDetailsFragment();
+                        return  deliveryDetailsFragment;
+                    }
+
+
                 default:
                     return null;
             }
