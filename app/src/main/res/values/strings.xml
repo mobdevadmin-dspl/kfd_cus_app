@@ -3,7 +3,7 @@
     <string name="connection_string">/api/v1/</string>
     <string name="developed_by_rashmi">Developed by Datamation.</string>
     <string name="txt_msg">Your Network is Unavailable.Check Your data or Wi-Fi Connection.</string>
-    <string name="title_activity_home">Home : Assistance 77-2618584 Ver:3.0.13 </string>
+    <string name="title_activity_home">Home : Assistance 77-2618584 Ver:3.0.15 </string>
     <string name="title_home">Home</string>
     <string name="title_sa">Place Order</string>
     <string name="title_download_upload">Sync</string>

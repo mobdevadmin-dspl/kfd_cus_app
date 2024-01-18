@@ -294,18 +294,6 @@ public class OrderFragment extends Fragment {
                             intent.putExtra("From", "edit");
                             startActivity(intent);
 
-
-//                        startActivity(intent);
-//                        getActivity().finish();
-
-//                        FragmentManager fragmentManager = getFragmentManager ();
-//                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
-//
-//                        OrderDetailFragment myfragment = new OrderDetailFragment();  //your fragment
-//
-//                        // work here to add, remove, etc
-//                        fragmentTransaction.add (R.id.order, myfragment);
-//                        fragmentTransaction.commit ();
                         } else {
                             new SharedPref(getActivity()).setOrderId(0);
                             new SharedPref(getActivity()).setEditOrderId(0);
@@ -322,7 +310,7 @@ public class OrderFragment extends Fragment {
                     new OrderController(getActivity()).updateIsActive("" + headerTitle.getOrderId(), "2");
                     ArrayList<OrderNew> orders = new OrderController(getActivity()).getAllUnSyncOrdHedByOrderId("" +headerTitle.getOrderId());
                     // Log.d(">>>2", ">>>2 ");
-                    if (NetworkUtil.isNetworkAvailable(getActivity())) {
+                 //   if (NetworkUtil.isNetworkAvailable(getActivity()) && (NetworkUtil.isNotPoorConnection(getActivity())==false)) {
                         if (stats.getText().toString().equals("NOT SEND")) {
                             try {
                                 if (new OrderController(getActivity()).getAllUnSyncOrdHed().size() > 0) {
@@ -387,40 +375,6 @@ public class OrderFragment extends Fragment {
                                                     }
 
 
-
-//
-//                                                    if (response != null && response.body() != null) {
-//                                                        int status = response.code();
-//                                                        Log.d(">>>response code", ">>>res " + status);
-//                                                        Log.d(">>>response message", ">>>res " + response.message());
-//                                                        Log.d(">>>response body", ">>>res " + response.body().toString());
-//                                                        int resLength = response.body().toString().trim().length();
-//                                                        String resmsg = "" + response.body().toString();
-//                                                        if (status == 200 && !resmsg.equals("") && !resmsg.equals(null) && resmsg.substring(0, 3).equals("202")) {
-////                                                        mHandler.post(new Runnable() {
-////                                                            @Override
-////                                                            public void run() {
-//                                                            c.setIsSync("1");
-//                                                            new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "1");
-//
-//                                                            FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                                                            ft.detach(OrderFragment.this).attach(OrderFragment.this).commit();
-////                                                            listVanAdapter.notifyDataSetChanged();
-//                                                            //       }
-//                                                            //     });
-//                                                        } else {
-//                                                            c.setIsSync("0");
-//                                                            new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "0");
-//
-//                                                            FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                                                            ft.detach(OrderFragment.this).attach(OrderFragment.this).commit();
-////                                                           listVanAdapter.notifyDataSetChanged();
-//                                                            requestReupload();
-//                                                        }
-//                                                    } else {
-//                                                        Toast.makeText(getActivity(), " Invalid response when order upload", Toast.LENGTH_LONG).show();
-//                                                    }
-
                                                 }
 
                                                 @Override
@@ -453,9 +407,9 @@ public class OrderFragment extends Fragment {
 //                        else if (stats.getText().toString().equals("PROCESSING")) {
 //                            new OrderStatusDownload(headerTitle.getOrderId(), "DISPATCHED").execute();
 //                        }
-                    } else {
-                        Toast.makeText(getActivity(), "No internet connection", Toast.LENGTH_LONG).show();
-                    }
+//                    } else {
+//                        Toast.makeText(getActivity(), "No internet connection", Toast.LENGTH_LONG).show();
+//                    }
                     prepareListData("", "");
 //                    listVanAdapter.notifyDataSetChanged();
                     Toast.makeText(getActivity(), "Refreshed order successfully", Toast.LENGTH_LONG).show();

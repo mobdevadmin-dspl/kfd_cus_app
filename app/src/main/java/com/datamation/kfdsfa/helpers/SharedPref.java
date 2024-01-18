@@ -529,11 +529,11 @@ public class SharedPref {
 //        return sharedPref.getString("baseURL", "http://192.168.0.5:1025");
        // return sharedPref.getString("baseURL", "http://192.168.0.5:1036");
 
-/******Live******/      return sharedPref.getString("baseURL", "http://124.43.5.227:1035");//SLT
+/******Live******/   //  return sharedPref.getString("baseURL", "http://124.43.5.227:1035");//SLT
 
 
 
-        /******Test******/ // return sharedPref.getString("baseURL", "http://192.168.0.5:1036");
+        /******Test******/  return sharedPref.getString("baseURL", "http://192.168.0.5:1036");
        // return sharedPref.getString("baseURL", "http://123.231.15.146/:1035");//Dialog
         //return sharedPref.getString("baseURL", "http://192.168.43.62");
 
