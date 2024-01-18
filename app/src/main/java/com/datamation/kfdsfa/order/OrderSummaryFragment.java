@@ -162,7 +162,13 @@ public class OrderSummaryFragment extends Fragment {
         fabSave_Upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveAndUploadDialog();
+                if (NetworkUtil.isNetworkAvailable(getActivity()) && (NetworkUtil.isNotPoorConnection(getActivity())==false)) {
+                    Toast.makeText(getActivity(), "Poor Internet Connection", Toast.LENGTH_LONG).show();
+                    saveSummaryDialog();
+                }else
+                {
+                    SaveAndUploadDialog();
+                }
             }
         });
 
@@ -717,7 +723,7 @@ public class OrderSummaryFragment extends Fragment {
 
     public void Upload(ArrayList<OrderNew> orders) {
         // new OrderController(getActivity()).updateIsActive(""+mSharedPref.generateOrderId(),"2");
-        if (NetworkUtil.isNetworkAvailable(getActivity())) {
+       // if (NetworkUtil.isNetworkAvailable(getActivity())) {
             if (new OrderController(getActivity()).getAllUnSyncOrdHed().size() > 0 ) {
                 for (final OrderNew c : orders) {
                     try {
@@ -757,10 +763,9 @@ public class OrderSummaryFragment extends Fragment {
                                             public void run() {
                                                 c.setIsSync("1");
                                                 c.setIsActive("2");
-                                            //    new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "1");
+
                                                 new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "1", "SYNCED","2");
 
-                                                //new OrderController(getActivity()).updateIsActive(c.getRefNo(), "2");
                                                 addRefNoResults(c.getRefNo() +" --> Success\n",orders.size());
                                                 //Toast.makeText(getActivity(), "Order Upload successfully..!", Toast.LENGTH_LONG).show();
 
@@ -783,44 +788,6 @@ public class OrderSummaryFragment extends Fragment {
                                 }// this will tell you why your api doesnt work most of time
 
 
-//                                if (response != null && response.body() != null) {
-//                                    int status = response.code();
-//                                    Log.d(">>>response code", ">>>res " + status);
-//                                    Log.d(">>>response message", ">>>res " + response.message());
-//                                    Log.d(">>>response body", ">>>res " + response.body().toString());
-//                                    int resLength = response.body().toString().trim().length();
-//                                    String resmsg = "" + response.body().toString();
-//                                    if (status == 200 && !resmsg.equals("") && !resmsg.equals(null) && resmsg.substring(0,3).equals("202")) {
-//                                        mHandler.post(new Runnable() {
-//                                            @Override
-//                                            public void run() {
-//                                                c.setIsSync("1");
-//                                                c.setIsActive("2");
-//                                                new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "1");
-//                                                new OrderController(getActivity()).updateIsActive(c.getRefNo(), "2");
-//                                                Toast.makeText(getActivity(), "Order Upload successfully..!", Toast.LENGTH_LONG).show();
-//
-//                                                Intent intnt = new Intent(getActivity(), ActivityHome.class);
-//                                                startActivity(intnt);
-//                                                getActivity().finish();
-//                                            }
-//                                        });
-//                                    } else {
-//                                        c.setIsSync("0");
-//                                        c.setIsActive("1");
-//                                        new OrderController(getActivity()).updateIsSynced(c.getRefNo(), "0");
-//                                        new OrderController(getActivity()).updateIsActive(c.getRefNo(), "1");
-//                                        Toast.makeText(getActivity(), "Order Upload Failed.", Toast.LENGTH_LONG).show();
-////                                        requestReupload();
-////                                        Intent intnt = new Intent(getActivity(), ActivityHome.class);
-////                                        startActivity(intnt);
-////                                        getActivity().finish();
-//
-//                                    }
-//                                } else {
-//                                    Toast.makeText(getActivity(), " Invalid response when order upload", Toast.LENGTH_LONG).show();
-//                                }
-
                             }
 
                             @Override
@@ -841,8 +808,8 @@ public class OrderSummaryFragment extends Fragment {
             }else{
                 Toast.makeText(getActivity(), "No Records to upload !", android.widget.Toast.LENGTH_LONG).show();
             }
-        } else
-            Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_LONG).show();
+//        } else
+//            Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_LONG).show();
 
     }
 

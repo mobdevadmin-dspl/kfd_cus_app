@@ -294,7 +294,7 @@ public class FragmentTools extends Fragment implements View.OnClickListener, Upl
                     public void onPositive(MaterialDialog dialog) {
                         super.onPositive(dialog);
                         boolean connectionStatus = NetworkUtil.isNetworkAvailable(context);
-                        if (connectionStatus == true) {
+                        if ((connectionStatus == true) && (NetworkUtil.isNotPoorConnection(getActivity())==false)) {
 
                             ArrayList<OrderNew> orderList = new OrderController(getActivity()).getAllUnSyncOrdHed();
 
